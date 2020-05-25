@@ -2,18 +2,18 @@ package com.mrlong.demo;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class MyCache {
     private final Map<String, Object> map = new ConcurrentHashMap<>();
-    private ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
+    private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
 
     /**
      * 写
      * 需要原子 + 独立  过程不能被插入
      */
     public void put(String key, Object object) {
+        // 加锁共享锁（写锁）
         rwLock.writeLock().lock();
         try {
             System.out.println(Thread.currentThread().getName() + "\t写操作开始");
@@ -22,6 +22,7 @@ class MyCache {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            // 解锁
             rwLock.writeLock().unlock();
         }
     }
@@ -30,6 +31,7 @@ class MyCache {
      * 读操作
      */
     public void get(String key) {
+        // 加锁共享锁（读锁）
         rwLock.readLock().lock();
         try {
             System.out.println(Thread.currentThread().getName() + "正在读取数据");
