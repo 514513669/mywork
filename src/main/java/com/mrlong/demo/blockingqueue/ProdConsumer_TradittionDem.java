@@ -78,7 +78,7 @@ class MyData {
  *
  *      2，线程             操作(方法)          资源类
  *      3，判断             干活          通知
- *      4, 防止虚假幻想机制（多线程的判断要用while）
+ *      4, 防止虚假唤醒机制（多线程的判断要用while）
  *
  * @author liulong
  * @version 1.0

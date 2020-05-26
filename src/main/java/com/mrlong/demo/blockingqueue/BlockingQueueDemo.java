@@ -4,15 +4,22 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+class MyResources {
+
+
+
+}
+
+
 /**
  *
  * add
- * remove 没有报异常
+ * remove 没有就报异常
  *
  * offer
- * pool 没有返回null
+ * pool 没有就返回null
  *
- * put  没有 线程一直等待 一直阻塞
+ * put  没有就线程一直等待 一直阻塞
  * take
  *
  * 常用 boolean offer(E e, long timeout, TimeUnit unit)
@@ -25,11 +32,6 @@ public class BlockingQueueDemo {
 
     public static void main(String[] args) throws InterruptedException {
 
-        BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(3);
-
-        System.out.println(blockingQueue.offer("a", 2L, TimeUnit.SECONDS));
-        System.out.println(blockingQueue.offer("a", 2L, TimeUnit.SECONDS));
-        System.out.println(blockingQueue.offer("a", 2L, TimeUnit.SECONDS));
 
 
 
