@@ -1,4 +1,4 @@
-package com.mrlong.demo;
+package com.mrlong.demo.callable;
 
 
 import java.util.concurrent.locks.Condition;
