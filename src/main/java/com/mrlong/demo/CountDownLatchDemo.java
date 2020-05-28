@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownLatchDemo {
 
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         countDownLatchDemo();
 
     }
@@ -34,7 +34,7 @@ public class CountDownLatchDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("===========我是最后一个=============");
+        System.out.println("===========我是最后一个同学=============");
     }
 
 }
