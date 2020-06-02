@@ -11,8 +11,18 @@ class MySource implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println(Thread.currentThread().getName() + "***************** come in Callable");
-        //TimeUnit.MILLISECONDS.sleep(3);
+        TimeUnit.MILLISECONDS.sleep(3);
         return 1024;
+    }
+}
+
+class MyBus implements Callable<String> {
+
+    @Override
+    public String call() throws Exception {
+        System.out.println(Thread.currentThread().getName() + "******** come in my bus");
+        TimeUnit.MILLISECONDS.sleep(400);
+        return "my bus";
     }
 }
 
@@ -26,18 +36,20 @@ public class CallableDemo1 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         FutureTask<Integer> futureTask = new FutureTask<>(new MySource());
-        FutureTask<Integer> futureTask2 = new FutureTask<>(new MySource());
+        FutureTask<String> futureTask2 = new FutureTask<>(new MyBus());
 
         new Thread(futureTask, "AAA").start();
         new Thread(futureTask2, "BBB").start();
 
 
         System.out.println("********* main");
-        while (!futureTask.isDone()) {
-            //System.out.println("线程正在计算中。。。。");
+        while (!futureTask.isDone() || !futureTask2.isDone()) {
+            System.out.println("AAA & BBB线程正在计算中。。。。");
         }
+
+
         int result01 = futureTask.get();
-        int result02 = futureTask2.get();
+        String result02 = futureTask2.get();
         System.out.println("*********" + (result01 + result02));
 
     }

@@ -85,7 +85,9 @@ class MyDatas {
 public class ProducersAndconsumers {
 
     public static void main(String[] args) throws InterruptedException {
-        MyDatas datas = new MyDatas(new LinkedBlockingQueue<>(3));
+
+        System.out.println(13 & 17);
+        /*MyDatas datas = new MyDatas(new ArrayBlockingQueue<>(3));
 
         new Thread(() -> {
             try {
@@ -106,7 +108,7 @@ public class ProducersAndconsumers {
         }, "consumer").start();
 
         TimeUnit.SECONDS.sleep(2);
-        datas.stop();
+        datas.stop();*/
 
     }
 
