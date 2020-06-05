@@ -1,0 +1,38 @@
+server:
+  port: 9909
+  servlet:
+    #配置访问时的项目名
+    context-path: /enjoylife
+spring:
+  profiles:
+    active: dev
+  application:
+    name: enjoylife-service
+  main:
+    allow-bean-definition-overriding: true
+  # mysql数据源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://newjtmm-dev-test.cigm0lphgnso.rds.cn-north-1.amazonaws.com.cn:3306/dev-enjoylife?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: java
+    password: java_123#@!
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+
+mybatis-plus:
+  #Mapper 目录扫描
+  mapper-locations: classpath*:/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.tiens.enjoylife.entity.*
+  #刷新mapper 调试神器
+  global-config:
+    refresh-mapper: true
+
+logging:
+  level:
+    com.bellwether.service: debug
+    org.springframework: info
+  config: classpath:logback.xml
+  log

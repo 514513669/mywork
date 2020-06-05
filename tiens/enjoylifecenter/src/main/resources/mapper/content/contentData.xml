@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiens.enjoylife.mapper.content.ContentDataMapper">
+
+    <resultMap id="BaseResultMap" type="com.tiens.enjoylife.entity.content.ContentDataDTO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="release_time" property="releaseTime" jdbcType="TIMESTAMP"/>
+        <result column="content_category_id" property="contentCategoryId" jdbcType="INTEGER"/>
+        <result column="content_type_id" property="contentTypeId" jdbcType="INTEGER"/>
+        <result column="short_intro" property="shortIntro" jdbcType="VARCHAR"/>
+        <result column="rich_intro" property="richIntro" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="copy_right" property="copyright" jdbcType="VARCHAR"/>
+        <result column="track_type" property="trackType" jdbcType="INTEGER"/>
+        <result column="albums_id" property="albumsId" jdbcType="INTEGER"/>
+        <result column="column_id" property="columnId" jdbcType="INTEGER"/>
+        <!--<result column="created" property="created" jdbcType="VARCHAR"/>-->
+    </resultMap>
+
+
+</mapper>
