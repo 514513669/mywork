@@ -8,7 +8,6 @@ import lombok.Getter;
  * @version 1.0
  * @date 2020/5/24 2:54 下午
  */
-@Getter
 public enum CountEnum {
 
     /**
@@ -21,8 +20,8 @@ public enum CountEnum {
     E(5, "E"),
     F(6, "F");
 
-    final private int code;
-    final private String msg;
+    @Getter final private int code;
+    @Getter final private String msg;
 
     CountEnum(int code, String msg) {
         this.code = code;
