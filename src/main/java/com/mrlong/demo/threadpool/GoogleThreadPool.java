@@ -2,11 +2,8 @@ package com.mrlong.demo.threadpool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author liulong
@@ -15,20 +12,51 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class GoogleThreadPool {
 
+    public static final ThreadFactory NAMED_THREAD_FACTORY = new ThreadFactoryBuilder()
+            .setNameFormat("工作线程池-%d").build();
+
+    /**
+     * Common Thread Pool
+     */
+    public static final ExecutorService POOL = new ThreadPoolExecutor(1000, 2000,
+            0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<>(1024), NAMED_THREAD_FACTORY, new ThreadPoolExecutor.AbortPolicy());
+
+    //pool.execute(()-> System.out.println(Thread.currentThread().getName()));
+    //pool.shutdown();//gracefully shutdown
+
+    /**
+     * 关闭线程池
+     */
+    public static void shutdownPool () {
+        POOL.shutdown();
+    }
+
     public static void main(String[] args) {
 
-        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
-                .setNameFormat("demo-pool-%d").build();
+        for (int i = 0; i < 1000; i++) {
+            POOL.execute(() -> {
+                try {
+                    Integer call = new MyBus().call();
+                    System.out.println(Thread.currentThread().getName()+ "\t" +call);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-        //Common Thread Pool
-        ExecutorService pool = new ThreadPoolExecutor(5, 200,
-                0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+        shutdownPool();
 
-        pool.execute(()-> System.out.println(Thread.currentThread().getName()));
-        pool.shutdown();//gracefully shutdown
+    }
 
+}
 
+class MyBus implements Callable<Integer> {
+
+    @Override
+    public Integer call() throws Exception {
+        TimeUnit.SECONDS.sleep(1);
+        return -1;
     }
 
 }
