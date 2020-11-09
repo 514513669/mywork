@@ -1,8 +1,34 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+# eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+# External tool builders
+.externalToolBuilders/
+# Locally stored "Eclipse launch configurations"
+*.launch
+# CDT-specific
+.cproject
+# PDT-specific
+.buildpath
+.factorypath
+
+
+### IntelliJ IDEA ###
+*.iml
+*.ipr
+*.iws
+.idea
+
 
 ### STS ###
 .apt_generated
@@ -11,23 +37,32 @@ target/
 .project
 .settings
 .springBeans
-.sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-.idea/**
-/nbdist/
-/.nb-gradle/
+nbproject/private/
 build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-### VS Code ###
-.vscode/
-/.idea/
+
+# java
+*.class
+# Package Files #
+*.war
+*.ear
+*.log
+*.log.*
+
+#maven
+target/
+
+
+#gradle
+.gradle
+build/
+gradle/
+out/
+!gradle/wrapper/gradle-wrapper.jar
