@@ -1,8 +1,5 @@
 package com.mrlong.demo.utils;
 
-
-import lombok.extern.slf4j.Slf4j;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,7 +12,6 @@ import java.util.GregorianCalendar;
  * @author admin
  * @date 2020-08-12
  */
-@Slf4j
 public class DateUtil {
 
     private static final String YYMMDD_HMS_24 = "yyyy/MM/dd HH:mm:ss";
